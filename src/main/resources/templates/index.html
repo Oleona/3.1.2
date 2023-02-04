@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<div align="center">
+    <table cellpadding="5" cellspacing="35" style="text-align: center ;background-color: lavender;font-size: 2em ">
+        <thead>
+        <tr>
+            <th scope="col">NAME</th>
+            <th scope="col">LAST NAME</th>
+            <th scope="col">AGE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user:${listUsers}">
+            <td th:text="${user.getName()}"/>
+            <td th:text="${user.getLastName()}"/>
+            <td th:text="${user.getAge()}"/>
+            <td><a th:href="@{/edit/{id}(id=${user.getId()})}">Edit</a></td>
+            <td>
+                <form th:method="DELETE" th:action="@{/{id}(id=${user.getId()})}">
+                    <input type="submit" style=background-color:rosybrown value="DELETE"/>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<br/>
+<hr/>
+<div align="center" style="text-align: center ;background-color: lavender;font-size: 2em ">
+    <a href="/new">Create new person</a>
+</div>
+<div align="center" style="text-align: center ;background-color: lavender;font-size: 2em ">
+
+</div>
+
+</body>
+</html>
